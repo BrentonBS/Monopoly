@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="An interactive ocean-themed game board">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="example1.css">
+    <title>Ocean Adventure</title>
+</head>
+<body>
+    <div class="table">
+        <div class="board">
+            <div class="center">
+                <h1 class="title">Ocean Adventure</h1>
+                <h1 id="sum">0</h1>
+                <div class="dice" id="dice">
+                    <div class="die" id="die1">
+                        <i class="fa-solid fa-dice-one" style="font-size: 3.5rem;"></i>
+                    </div>
+                    <div class="die" id="die2">
+                        <i class="fa-solid fa-dice-six" style="font-size: 3.5rem;"></i>
+                    </div>
+                </div>
+                <button class="btn" onclick="rollDice()">Roll Dice</button>
+                <div class="treasure-chest">
+                    <h2 class="label">Treasure Chest</h2>
+                    <div class="deck"></div>
+                    <button class="btn" onclick="">Roll</button>
+                </div>
+            </div>
+
+            <div class="space corner go">
+                <div class="container">
+                    <div class="instructions">Collect $200.00 treasure as you pass</div>
+                    <div class="go-word">GO</div>
+                </div>
+                <div class="arrow fa fa-long-arrow-left"></div>
+            </div>
+
+            <div class="row horizontal-row bottom-row">
+                <div class="space property">
+                    <div class="container">
+                        <div class="color-bar coral"></div>
+                        <div class="name">Tide Pool</div>
+                        <div class="price">PRICE $120</div>
+                    </div>
+                </div>
+                <div class="space property">
+                    <div class="container">
+                        <div class="color-bar coral"></div>
+                        <div class="name">Sandy Cove</div>
+                        <div class="price">PRICE $100</div>
+                    </div>
+                </div>
+                <div class="space chance">
+                    <div class="container">
+                        <div class="name">Captain's Challenge</div>
+                        <i class="drawing fa fa-question"></i>
+                    </div>
+                </div>
+                <div class="space property">
+                    <div class="container">
+                        <div class="color-bar coral"></div>
+                        <div class="name">Sea Turtle Sanctuary</div>
+                        <div class="price">PRICE $100</div>
+                    </div>
+                </div>
+                <div class="space railroad">
+                    <div class="container">
+                        <div class="name">Ocean Liner</div>
+                        <i class="drawing fa fa-subway"></i>
+                        <div class="price">PRICE $200</div>
+                    </div>
+                </div>
+
+                <div class="space fee income-tax">
+                    <div class="container">
+                        <div class="name">Tide Tax</div>
+                        <div class="diamond"></div>
+                        <div class="instructions">Pay 10%<br>or<br>$200</div>
+                    </div>
+                </div>
+
+                <div class="space property">
+                    <div class="container">
+                        <div class="color-bar dark-purple"></div>
+                        <div class="name">Dolphin Bay</div>
+                        <div class="price">PRICE $50</div>
+                    </div>
+                </div>
+
+                <div class="space community-chest">
+                    <div class="container">
+                        <div class="name">Treasure Chest</div>
+                        <i class="drawing fa fa-cube"></i>
+                        <div class="instructions">Follow the instructions on the top card</div>
+                    </div>
+                </div>
+
+                <div class="space property">
+                    <div class="container">
+                        <div class="color-bar dark-purple"></div>
+                        <div class="name three-line-name">Seagull Pier</div>
+                        <div class="price">PRICE $50</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space corner jail">
+                <div class="just">Just</div>
+                <div class="drawing">
+                    <div class="container">
+                        <div class="name">In</div>
+                        <div class="window">
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <i class="person fa fa-frown-o"></i>
+                        </div>
+                        <div class="name">Sea Jail</div>
+                    </div>
+                </div>
+                <div class="visiting">Visiting</div>
+            </div>
+
+            <div class="row vertical-row left-row">
+                <div class="space property">
+                    <div class="container">
+                        <div class="color-bar orange"></div>
+                        <div class="name">Coarl Gardens</div>
+                        <div class="price">PRICE $200</div>
+                    </div>
+                </div>
+                <div class="space property">
+                    <div class="container">
+                        <div class="color-bar orange"></div>
+                        <div class="name">Lighthouse<br> Point</div>
+                        <div class="price">PRICE $180</div>
+                    </div>
+                </div>
+                <div class="space community-chest">
+                    <div class="container">
+                        <div class="name">Treasure Chest</div>
+                        <i class="drawing fa fa-cube"></i>
+                        <div class="instructions">Follow the instructions on the top card</div>
+                    </div>
+                </div>
+
+                <div class="space property">
+                    <div class="container">
+                        <div class="color-bar orange"></div>
+                        <div class="name">Whale Watching Tours</div>
+                        <div class="price">PRICE $180</div>
+                    </div>
+                </div>
+
+                <div class="space railroad">
+                    <div class="container">
+                        <div class="name">Coastal Ferry Service</div>
+                        <i class="drawing fa fa-subway"></i>
+                        <div class="price">PRICE $200</div>
+                    </div>
+                </div>
+
+                <div class="space property">
+                    <div class="container">
+                        <div class="color-bar purple"></div>
+                        <div class="name">Shipwreck Cove</div>
+                        <div class="price">PRICE $160</div>
+                    </div>
+                </div>
+
+                <div class="space property">
+                    <div class="container">
+                        <div class="color-bar purple"></div>
+                        <div class="name">Aquatic Adventure Park</div>
+                        <div class="price">PRICE $140</div>
+                    </div>
+                </div>
+
+                <div class="space utility electric-company">
+                    <div class="container">
+                        <div class="name">Aquatic Power Plant</div>
+                        <i class="drawing fa fa-lightbulb-o"></i>
+                        <div class="price">PRICE $150</div>
+                    </div>
+                </div>
+
+                <div class="space property">
+                    <div class="container">
+                        <div class="color-bar purple"></div>
+                        <div class="name">Seabird Sanctuary</div>
+                        <div class="price">PRICE $140</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space corner free-parking">
+                <div class="container">
+                    <div class="name">Open Ocean</div>
+                    <i class="drawing fa fa-anchor"></i>
+                    <div class="name">Parking</div>
+                </div>
+            </div>
+
+            <div class="row horizontal-row top-row">
+                <div class="space property">
+                    <div class="container">
+                        <div class="color-bar red"></div>
+                        <div class="name">Atlantis Resort</div>
+                        <div class="price">PRICE $220</div>
+                    </div>
+                </div>
+                <div class="space chance">
+                    <div class="container">
+                        <div class="name">Deep Sea Destiny</div>
+                        <i class="drawing fa fa-question blue"></i>
+                    </div>
+                </div>
+                <div class="space property">
+                    <div class="container">
+                        <div class="color-bar red"></div>
+                        <div class="name">Kelp Forest</div>
+                        <div class="price">PRICE $220</div>
+                    </div>
+                </div>
+                <div class="space property">
+                    <div class="container">
+                        <div class="color-bar red"></div>
+                        <div class="name">Beachfront Promenade</div>
+                        <div class="price">PRICE $200</div>
+                    </div>
+                </div>
+                <div class="space railroad">
+                    <div class="container">
+                        <div class="name">Deep Sea Shipping</div>
+                        <i class="drawing fa fa-subway"></i>
+                        <div class="price">PRICE $200</div>
+                    </div>
+                </div>
+
+                <div class="space property">
+                    <div class="container">
+                        <div class="color-bar yellow"></div>
+                        <div class="name">Research Submarine Station</div>
+                        <div class="price">PRICE $260</div>
+                    </div>
+                </div>
+                <div class="space property">
+                    <div class="container">
+                        <div class="color-bar yellow"></div>
+                        <div class="name">Coastal National Park</div>
+                        <div class="price">PRICE $260</div>
+                    </div>
+                </div>
+                <div class="space utility waterworks">
+                    <div class="container">
+                        <div class="name">Seashell Cleaning Service</div>
+                        <i class="drawing fa fa-tint"></i>
+                        <div class="price">PRICE $120</div>
+                    </div>
+                </div>
+                <div class="space property">
+                    <div class="container">
+                        <div class="color-bar yellow"></div>
+                        <div class="name">Underwater Volcano</div>
+                        <div class="price">PRICE $280</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space corner go-to-jail">
+                <div class="container">
+                    <div class="name">Go To</div>
+                    <i class="drawing fa fa-gavel"></i>
+                    <div class="name">Sea Jail</div>
+                </div>
+            </div>
+
+            <div class="row vertical-row right-row">
+                <div class="space property">
+                    <div class="container">
+                        <div class="color-bar green"></div>
+                        <div class="name">Deep Ocean Trench</div>
+                        <div class="price">PRICE $300</div>
+                    </div>
+                </div>
+                <div class="space property">
+                    <div class="container">
+                        <div class="color-bar green"></div>
+                        <div class="name three-line-name">Harbor View Hotel</div>
+                        <div class="price">PRICE $300</div>
+                    </div>
+                </div>
+                <div class="space community-chest">
+                    <div class="container">
+                        <div class="name">Treasure Chest</div>
+                        <i class="drawing fa fa-cube"></i>
+                        <div class="instructions">Follow instructions on top card</div>
+                    </div>
+                </div>
+                <div class="space property">
+                    <div class="container">
+                        <div class="color-bar green"></div>
+                        <div class="name long-name">Crab Shack</div>
+                        <div class="price">PRICE $320</div>
+                    </div>
+                </div>
+                <div class="space railroad">
+                    <div class="container">
+                        <div class="name">Submarine Transport</div>
+                        <i class="drawing fa fa-subway"></i>
+                        <div class="price">PRICE $200</div>
+                    </div>
+                </div>
+                <div class="space chance">
+                    <div class="container">
+                        <div class="name">Fisherman's Fortune</div>
+                        <i class="drawing fa fa-question"></i>
+                    </div>
+                </div>
+                <div class="space property">
+                    <div class="container">
+                        <div class="color-bar dark-blue"></div>
+                        <div class="name">Mermaid's Laggon</div>
+                        <div class="price">PRICE $350</div>
+                    </div>
+                </div>
+                <div class="space fee luxury-tax">
+                    <div class="container">
+                        <div class="name">Wave Tax</div>
+                        <div class="drawing fa fa-diamond"></div>
+                        <div class="instructions">Pay $75.00</div>
+                    </div>
+                </div>
+                <div class="space property">
+                    <div class="container">
+                        <div class="color-bar dark-blue"></div>
+                        <div class="name">Sunken Treasure Island</div>
+                        <div class="price">PRICE $400</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="example1.js"></script>
+</body>
+</html>
