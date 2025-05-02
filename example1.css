@@ -1,0 +1,483 @@
+/* =================
+// GLOBAL STYLES
+// ================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: url("https://i.imgur.com/Bk4AQF0.jpg");
+    background-size: cover;  
+    font-family: 'Oswald', sans-serif;
+    color: #2f4f4f; /* Dark Sea Green */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+
+/* =================
+// PROPERTY COLORS
+// ================= */
+
+.coral      { background: #FFCCBB; }
+.dark-purple { background: #5e3577; }
+.orange     { background: #FFAB40; }
+.red        { background: #FF6F61; }
+.yellow     { background: #FFF68F; }
+.green      { background: #66CDAA; }
+.dark-blue  { background: #1E90FF; }
+
+/* =================
+// LAYOUT
+// ================= */
+
+.table {
+    padding: 20px;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: 125px repeat(9, 80px) 125px;
+    grid-template-rows: 125px repeat(9, 80px) 125px;
+    grid-gap: 2px;
+    margin: 20px auto;
+    width: 994px;
+    height: 994px;
+    background: #f0f8ff; /* light blue for ocean */
+    border: 2px solid #2f4f4f; /* Dark Sea Green */
+    border-radius: 15px;
+}
+
+.center {
+    grid-column: 2 / 11;
+    grid-row: 2 / 11;
+    background: #e0ffff; /* light cyan */
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(7, 1fr);
+    justify-items: center;
+    align-items: center;
+}
+
+.title {
+    grid-column: 1 / 9;
+    grid-row: 4;
+    font-size: 80px;
+    color: #4682B4; /* Steel Blue */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.treasure-chest {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    transform: rotate(325deg);
+    margin-bottom: 60px;
+    margin-right: 60px;
+}
+
+.label {
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+/* Deck Styles */
+.deck {
+    border: 2px dashed #2f4f4f; /* Dark Sea Green */
+    width: 160px;
+    height: 120px;
+}
+
+/* =================
+// ROWS OF SPACES
+// ================= */
+
+.row {
+    display: grid;
+    grid-gap: 2px;
+}
+
+.horizontal-row {
+    grid-template-columns: repeat(9, 80px);
+    grid-template-rows: 125px;
+}
+
+.vertical-row {
+    grid-template-columns: 125px;
+    grid-template-rows: repeat(9, 80px);
+}
+
+.bottom-row {
+    grid-column: 2 / 11;
+    grid-row: 11;
+}
+
+.left-row {
+    grid-column: 1;
+    grid-row: 2 / 11;
+}
+
+.top-row {
+    grid-column: 2 / 11;
+    grid-row: 1;
+}
+
+.right-row {
+    grid-column: 11;
+    grid-row: 2 / 11;
+}
+
+/* =================
+// SPACES
+// ================= */
+
+.space {
+    background: #e0ffff; /* Light cyan */
+    text-align: center;
+    border-radius: 10px; /* Rounded corners */
+    transition: transform 0.3s;
+}
+
+.space:hover {
+    transform: scale(1.05);
+}
+
+.space .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    transform-origin: center;
+    height: 125px;
+    width: 80px;
+}
+
+.space .name,
+.space .instructions {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.space .price {
+    font-size: 7px;
+    font-weight: bold;
+}
+
+/* Corner and special spaces */
+.corner .container {
+    justify-content: space-around;
+    height: 100%;
+    width: 100%;
+}
+
+.corner .name {
+    padding: 0;
+}
+
+/* Property styles */
+.property .color-bar {
+    height: 25px;
+    border-bottom: 2px solid #2f4f4f; /* Dark Sea Green */
+}
+
+.property .name {
+    padding-bottom: 50px;
+}
+
+/* Railroad styles */
+.railroad .name {
+    padding-top: 10px;
+}
+
+.railroad .drawing {
+    font-size: 60px;
+    color: #2f4f4f; /* Dark Sea Green */
+}
+
+/* Utility styles: Electric Company and Waterworks */
+.utility .name {
+    padding-top: 10px;
+}
+
+.utility .drawing {
+    font-size: 70px;
+}
+
+/* Fee and tax styles */
+.fee .name {
+    padding-top: 10px;
+    font-size: 14px;
+}
+
+.fee .instructions {
+    font-size: 10px;
+}
+
+/* Specific spaces styles */
+.go {
+    grid-column: 11;
+    grid-row: 11 / 12;
+    position: relative;
+}
+
+.go .container {
+    justify-content: flex-start;
+    transform: rotate(315deg);
+}
+
+.go .instructions {
+    padding: 0 30px;
+}
+
+.go .go-word {
+    font-size: 60px;
+    color: #FF4500; /* Orange Red */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.go .arrow {
+    font-size: 45px;
+    color: #FF4500; /* Orange Red */
+    position: absolute;
+    bottom: -10px;
+    left: 5px;
+}
+
+.jail {
+    grid-column: 1;
+    grid-row: 11 / 12;
+    display: grid;
+    grid-template-columns: repeat(10, 12.5px);
+    grid-template-rows: repeat(10, 12.5px);
+    justify-content: center;
+    align-items: center;
+}
+
+.jail .drawing {
+    grid-column: 4 / 11;
+    grid-row: 1 / 8;
+    width: 87.5px;
+    height: 87.5px;
+    background: #FFB6C1; /* Light Pink */
+    border-bottom: 2px solid #2f4f4f; /* Dark Sea Green */
+    border-left: 2px solid #2f4f4f; /* Dark Sea Green */
+}
+
+.jail .just {
+    grid-column: 3;
+    grid-row: 4;
+    transform: rotate(90deg);
+    padding-top: 5px;
+}
+
+.jail .visiting {
+    grid-column: 6;
+    grid-row: 8;
+}
+
+.jail .container {
+    align-items: center;
+    transform: rotate(45deg);
+}
+
+.jail .name {
+    font-size: 14px;
+}
+
+.jail .window {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+    width: 55px;
+    height: 55px;
+    background: #e0ffff; /* Light cyan */
+    border: 2px solid #2f4f4f; /* Dark Sea Green */
+}
+
+.jail .person {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    font-size: 40px;
+}
+
+.jail .bar {
+    height: 55px;
+    width: 2px;
+    background: #2f4f4f; /* Dark Sea Green */
+}
+
+.free-parking {
+    grid-column: 1;
+    grid-row: 1 / 2;
+}
+
+.free-parking .container {
+    justify-content: center;
+    transform: rotate(135deg);
+}
+
+.free-parking .name {
+    font-size: 16px;
+}
+
+.free-parking .drawing {
+    font-size: 60px;
+    color: #ff4500; /* orange red */
+    padding: 5px 0;
+}
+
+.go-to-jail {
+    grid-column: 11;
+    grid-row: 1 / 1;
+}
+
+.go-to-jail .container {
+    justify-content: center;
+    transform: rotate(225deg);
+}
+
+.go-to-jail .name {
+    font-size: 16px;
+}
+
+.go-to-jail .drawing {
+    font-size: 60px;
+    color: #8B0000; /* Dark Red */
+    padding: 5px 0;
+}
+
+.chance .container {
+    justify-content: center;
+}
+
+.chance .drawing {
+    font-size: 90px;
+    color: #ff4500; /* Orange Red */
+}
+
+.chance .blue {
+    color: #1E90FF; /* Dodger blue */
+}
+
+.community-chest .container {
+    justify-content: space-around;
+}
+
+.community-chest .drawing {
+    font-size: 50px;
+    color: #FFD700; /* Gold */
+}
+
+.community-chest .instructions {
+    font-size: 8px;
+}
+
+.electric-company .drawing {
+    color: #FFD700; /* Gold */
+}
+
+.waterworks .drawing {
+    color: #1E90FF; /* Dodger blue */
+}
+
+.income-tax .container {
+    justify-content: center;
+    align-items: center;
+}
+
+.income-tax .name {
+    padding-bottom: 5px;
+}
+
+.income-tax .diamond {
+    width: 5px;
+    height: 5px;
+    background: #2f4f4f; /* Dark Sea Green */
+    transform: rotate(45deg);
+    display: inline-block;
+}
+
+.income-tax .instructions {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.luxury-tax .drawing {
+    font-size: 50px;
+}
+
+.luxury-tax .instructions {
+    padding-bottom: 5px;
+}
+
+/* =================
+// UTILITY
+// ================= */
+
+.long-name {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.three-line-name {
+    position: relative;
+    top: 5px;
+}
+
+.dice {
+    grid-column: 1 / 9;
+    grid-row: 4 / 9;
+    display: flex;
+}
+.die {
+    grid-column: 1 / 9;
+    grid-row: 4 / 9;
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    border: 2px solid black;
+    margin: 10px;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 5px 10px rgba(255, 255, 255, 0.5);
+}
+.die.roll {
+    animation: roll 0.5s infinite; // Fixed animation timing syntax
+}
+
+@keyframes roll {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.btn {
+    grid-column: 1 / 9;
+    grid-row: 5 / 9;
+    background-color: rgba(255, 255, 255, 0.5);
+    color: #000;
+    margin-top: 10px;
+    padding: 5px 10px;
+    font-size: 15px;
+    cursor: pointer;
+    border: 2px solid black;
+    border-radius: 5px;
+    transition: all 0.3s ease-in;
+}
+.btn:hover {
+    background-color: #000;
+    color: #fff;
+    border: 1px solid #000;
+}
